@@ -1,0 +1,33 @@
+:root {
+  --primary-color: #21444e;
+  --primary-light-color: #cde9fa;
+  --primary-dark-color: #275f65;
+  --secondary-color: #889aa8;
+  
+}
+.rendering_button{
+    /* 灰蓝色的背景 */
+    background-color: var(--primary-dark-color);
+    border: none;
+    color: white;
+    width: 15%;
+    max-width: 150px;
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    transition-duration: 0.4s;
+   
+  }
+  
+  /* 悬浮特效 */
+  .rendering_button:hover {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    background-color: azure;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+ }

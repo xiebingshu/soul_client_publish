@@ -1,0 +1,27 @@
+.preview_choice{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.preview_text {
+    margin-left: 30%;
+    max-width: 400px;
+}
+
+.preview_star{
+   text-align: center;
+    
+}
+.preview_number{ 
+    margin-left: 30%;
+    max-width: 400px;
+    
+}
+.preview_choice .el-radio .el-radio__label {
+    font-size: 20px;
+  }
+  .preview_star .el-rate .el-rate__icon {
+    font-size: 40px;
+  }

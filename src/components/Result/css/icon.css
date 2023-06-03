@@ -1,0 +1,88 @@
+.home_icon {
+    background-image: url('../assets/home_icon.jpg');
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px; 
+    margin-right: 10px;
+    
+}
+.search_icon {
+    background-image: url('../assets/search_icon.jpg');
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px; 
+    margin-right: 10px;
+}
+.statistic_icon {
+    background-image: url('../assets/statistic_icon.png');
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px; 
+    margin-right: 10px;
+}
+.contact_icon{
+    background-image: url('../assets/contact_icon.jpg');
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px; 
+    margin-right: 10px;
+    
+}
+.login_icon{
+    background-image: url('../assets/login_icon.jpg');
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px; 
+    margin-right: 10px;
+    
+}
+.graph_icon{
+    background-image: url('../assets/graph_icon.jpg');
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px; 
+    margin-right: 10px;
+    
+}
+.questionnaire_icon{
+    background-image: url('../assets/questionnaire_icon.jpg');
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px; 
+    margin-right: 10px;
+    
+}
+.test_icon{
+    background-image: url('../assets/test_icon.jpg');
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px; 
+    margin-right: 10px;
+    
+}
+.download_icon{
+    background-image: url('../assets/download_icon.jpg');
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px; 
+    margin-right: 10px;
+    
+}

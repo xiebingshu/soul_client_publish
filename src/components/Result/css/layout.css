@@ -1,0 +1,62 @@
+.header_item {
+    border-bottom: 10px solid z#e6e6e6;
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out; /* 添加过渡效果 */
+   
+  }
+  
+.header_item:hover {
+    background-color: #e6f7ff;
+    transform: scale(1.2);
+    /*放大20%*/
+}
+
+.sidebar_item {
+    border-bottom: 1px solid #e6e6e6;
+    font-weight: bold;
+    padding: 16px 20px;
+    transition: transform 0.3s ease-in-out; /* 添加过渡效果 */
+  }
+  
+  .sidebar_item:hover {
+    background-color: #e6f7ff;
+    transform: scale(1.2); /* 放大 20% */
+  }
+  .app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .header {
+    background-color: #3093ff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    justify-self: start;
+  }
+  .sidebar {
+    background-color: #f0f0f0;
+    width: 200px;
+    padding: 0px 20px;
+  }
+  .main {
+    
+    background-color: #fff;
+    flex: 1;
+  }
+  .center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .fixed{
+    position: fixed;
+  }
+ 
