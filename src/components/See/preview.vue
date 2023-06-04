@@ -184,7 +184,7 @@ function handleBackgroundChange (event){
     // 将文件内容转化为 Base64 编码的字符串，并赋值给 state 中的 imageUrl
     axios({
       // 接口网址：包含协议名，域名，端口和路由
-      url: 'http://82.156.174.104:8000/api/edit_qn/save_qn_file',
+      url: 'http://82.156.174.104/api/edit_qn/save_qn_file',
       // 请求方式，默认为get，可以不写
       method: 'post',
       // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -222,7 +222,7 @@ function handleTitleChange (event){
     // 将文件内容转化为 Base64 编码的字符串，并赋值给 state 中的 imageUrl
     axios({
       // 接口网址：包含协议名，域名，端口和路由
-      url: 'http://82.156.174.104:8000/api/edit_qn/save_qn_file',
+      url: 'http://82.156.174.104/api/edit_qn/save_qn_file',
       // 请求方式，默认为get，可以不写
       method: 'post',
       // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -363,7 +363,7 @@ function save_qn(){
   console.log(questions_upload)
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/edit_qn/save_qn',
+    url: 'http://82.156.174.104/api/edit_qn/save_qn',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data

@@ -108,7 +108,7 @@ function signUp(){
   if(signForm.captcha == signForm.captcha_get && signForm.captcha_get != ''){
     axios({
       // 接口网址：包含协议名，域名，端口和路由
-      url: 'http://82.156.174.104:8000/api/user_about/register',
+      url: 'http://82.156.174.104/api/user_about/register',
       // 请求方式，默认为get，可以不写
       method: 'post',
       // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -152,7 +152,7 @@ function logIn(){
   }
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/login',
+    url: 'http://82.156.174.104/api/user_about/login',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -194,7 +194,7 @@ function getCaptcha(){
   if(captcha_time.value === '获取验证码'){
     axios({
       // 接口网址：包含协议名，域名，端口和路由
-      url: 'http://82.156.174.104:8000/api/user_about/register/captcha',
+      url: 'http://82.156.174.104/api/user_about/register/captcha',
       // 请求方式，默认为get，可以不写
       method: 'post',
       // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data

@@ -298,7 +298,7 @@ const Applications = ref([])
 function getApplication(){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/organization/list_unreviewed_list',
+    url: 'http://82.156.174.104/api/user_about/organization/list_unreviewed_list',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -318,7 +318,7 @@ function getApplication(){
 function deleteQr(item){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/mainpage/qn_about/delete_qn',
+    url: 'http://82.156.174.104/api/mainpage/qn_about/delete_qn',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -341,7 +341,7 @@ function deleteQr(item){
 function agreejoin(item, index){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/organization/pass',
+    url: 'http://82.156.174.104/api/user_about/organization/pass',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -367,7 +367,7 @@ const link_display = ref('')
 function getSharelink(id){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/mainpage/qn_about/generate_link',
+    url: 'http://82.156.174.104/api/mainpage/qn_about/generate_link',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -383,7 +383,7 @@ function getSharelink(id){
       projectEdit.state = '已开放'
       store.commit('updateCurrent',{project:projectEdit, index:store.getters.get_currentIndex})
       const parts = res.data.link.split('/')
-      link_display.value = 'http://localhost:5173/#/answer/' + parts[parts.length - 1]
+      link_display.value = 'http://82.156.174.104/?#/answer/' + parts[parts.length - 1]
       link_share.value = true
       store.commit('setCurrent', -1)
     }
@@ -394,7 +394,7 @@ function getSharelink(id){
 function getSharelink2(id){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/mainpage/qn_about/generate_link',
+    url: 'http://82.156.174.104/api/mainpage/qn_about/generate_link',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -432,7 +432,7 @@ const copy = async () => {
 function refusejoin(item, index){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/organization/pass',
+    url: 'http://82.156.174.104/api/user_about/organization/pass',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -517,7 +517,7 @@ function initNewOrganization(){
 function invite(){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/organization/invite',
+    url: 'http://82.156.174.104/api/user_about/organization/invite',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -549,7 +549,7 @@ function invite(){
 function leave(){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/organization/quit',
+    url: 'http://82.156.174.104/api/user_about/organization/quit',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -580,7 +580,7 @@ function createOrganization(){
     }
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/organization/create_organization',
+    url: 'http://82.156.174.104/api/user_about/organization/create_organization',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -606,7 +606,7 @@ function createOrganization(){
 function getQrganization(){
     axios({
       // 接口网址：包含协议名，域名，端口和路由
-      url: 'http://82.156.174.104:8000/api/mainpage/list_organization',
+      url: 'http://82.156.174.104/api/mainpage/list_organization',
       // 请求方式，默认为get，可以不写
       method: 'post',
       // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -636,7 +636,7 @@ function getQrganization(){
 function deleteOrganization(){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/organization/disband',
+    url: 'http://82.156.174.104/api/user_about/organization/disband',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -668,7 +668,7 @@ function getCurrentOrganizationEdit(){
 function changeCurrentOrganization(item) {
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/organization/list_user',
+    url: 'http://82.156.174.104/api/user_about/organization/list_user',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -696,7 +696,7 @@ function changeCurrentOrganization(item) {
 function removeMember(item, index){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/organization/kick',
+    url: 'http://82.156.174.104/api/user_about/organization/kick',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -769,7 +769,7 @@ function addBlankQuestionnaire(){
   }
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/edit_qn/save_qn',
+    url: 'http://82.156.174.104/api/edit_qn/save_qn',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -806,7 +806,7 @@ function addBlankQuestionnaire(){
 function geQuestionnaire_former(){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/mainpage/list_qn',
+    url: 'http://82.156.174.104/api/mainpage/list_qn',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -907,7 +907,7 @@ function geQuestionnaire_full(){
   let question_succeed = false
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
+    url: 'http://82.156.174.104/api/edit_qn/read_qn_file',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -931,7 +931,7 @@ function geQuestionnaire_full(){
   if(project_edit.title_URL != null && project_edit.title_URL != ''){
     axios({
       // 接口网址：包含协议名，域名，端口和路由
-      url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
+      url: 'http://82.156.174.104/api/edit_qn/read_qn_file',
       // 请求方式，默认为get，可以不写
       method: 'post',
       // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -956,7 +956,7 @@ function geQuestionnaire_full(){
   title_succeed = true
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/edit_qn/edit_qn',
+    url: 'http://82.156.174.104/api/edit_qn/edit_qn',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -1052,7 +1052,7 @@ function geQuestionnaire_full(){
             getPicture = true
             axios({
               // 接口网址：包含协议名，域名，端口和路由
-              url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
+              url: 'http://82.156.174.104/api/edit_qn/read_qn_file',
               // 请求方式，默认为get，可以不写
               method: 'post',
               // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -1122,7 +1122,7 @@ function geQuestionnaire_full_preview(){
   }
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
+    url: 'http://82.156.174.104/api/edit_qn/read_qn_file',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -1147,7 +1147,7 @@ function geQuestionnaire_full_preview(){
   {
     axios({
       // 接口网址：包含协议名，域名，端口和路由
-      url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
+      url: 'http://82.156.174.104/api/edit_qn/read_qn_file',
       // 请求方式，默认为get，可以不写
       method: 'post',
       // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -1174,7 +1174,7 @@ function geQuestionnaire_full_preview(){
   }
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/edit_qn/preview_qn',
+    url: 'http://82.156.174.104/api/edit_qn/preview_qn',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -1263,7 +1263,7 @@ function geQuestionnaire_full_preview(){
             getPicture = true
             axios({
               // 接口网址：包含协议名，域名，端口和路由
-              url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
+              url: 'http://82.156.174.104/api/edit_qn/read_qn_file',
               // 请求方式，默认为get，可以不写
               method: 'post',
               // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -1333,7 +1333,7 @@ function geQuestionnaire_full_answer(){
   }
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
+    url: 'http://82.156.174.104/api/edit_qn/read_qn_file',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -1357,7 +1357,7 @@ function geQuestionnaire_full_answer(){
   if(project_edit.title_URL != null && project_edit.title_URL != ''){
     axios({
       // 接口网址：包含协议名，域名，端口和路由
-      url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
+      url: 'http://82.156.174.104/api/edit_qn/read_qn_file',
       // 请求方式，默认为get，可以不写
       method: 'post',
       // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -1384,7 +1384,7 @@ function geQuestionnaire_full_answer(){
   }
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/edit_qn/preview_qn',
+    url: 'http://82.156.174.104/api/edit_qn/preview_qn',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -1473,7 +1473,7 @@ function geQuestionnaire_full_answer(){
             getPicture = true
             axios({
               // 接口网址：包含协议名，域名，端口和路由
-              url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
+              url: 'http://82.156.174.104/api/edit_qn/read_qn_file',
               // 请求方式，默认为get，可以不写
               method: 'post',
               // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data

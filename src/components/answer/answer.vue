@@ -182,7 +182,7 @@ onBeforeMount(()=>{
 onMounted(()=>{
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/answer_qn/answer_qn',
+    url: 'http://82.156.174.104/api/answer_qn/answer_qn',
     // 请求方式，默认为get`，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -216,7 +216,7 @@ onMounted(()=>{
       importantprogress.value = true
       axios({
         // 接口网址：包含协议名，域名，端口和路由
-        url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
+        url: 'http://82.156.174.104/api/edit_qn/read_qn_file',
         // 请求方式，默认为get，可以不写
         method: 'post',
         // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -237,7 +237,7 @@ onMounted(()=>{
       if(title_Url.value != null && title_Url.value != ''){
         axios({
           // 接口网址：包含协议名，域名，端口和路由
-          url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
+          url: 'http://82.156.174.104/api/edit_qn/read_qn_file',
           // 请求方式，默认为get，可以不写
           method: 'post',
           // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -340,7 +340,7 @@ onMounted(()=>{
           if(question.picture_url != null){
             axios({
               // 接口网址：包含协议名，域名，端口和路由
-              url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
+              url: 'http://82.156.174.104/api/edit_qn/read_qn_file',
               // 请求方式，默认为get，可以不写
               method: 'post',
               // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -418,7 +418,7 @@ function submit(){
   console.log(answers)
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/answer_qn/submit_answers',
+    url: 'http://82.156.174.104/api/answer_qn/submit_answers',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data

@@ -246,7 +246,7 @@ function addBlankQuestionnaire(){
     }
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/edit_qn/save_qn',
+    url: 'http://82.156.174.104/api/edit_qn/save_qn',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -311,7 +311,7 @@ function id2title(id){
 function getMessage(){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/message/list',
+    url: 'http://82.156.174.104/api/user_about/message/list',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -333,7 +333,7 @@ function getMessage(){
 function deleteMessage(item, index){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/message/delete',
+    url: 'http://82.156.174.104/api/user_about/message/delete',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -353,7 +353,7 @@ function deleteMessage(item, index){
 function agreejoin(item, index){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/organization/approve_join',
+    url: 'http://82.156.174.104/api/user_about/organization/approve_join',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
@@ -376,7 +376,7 @@ function agreejoin(item, index){
 function refusejoin(item, index){
   axios({
     // 接口网址：包含协议名，域名，端口和路由
-    url: 'http://82.156.174.104:8000/api/user_about/organization/approve_join',
+    url: 'http://82.156.174.104/api/user_about/organization/approve_join',
     // 请求方式，默认为get，可以不写
     method: 'post',
     // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
