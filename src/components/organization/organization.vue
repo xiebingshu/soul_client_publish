@@ -378,12 +378,14 @@ function getSharelink(id){
 // 成功请求回数据后，进入then，并用console.log打印结果
   }).then(res => {
     if(res.data.errno == 0){
+      store.commit('setCurrent', id)
       const projectEdit = getProject_edit()
       projectEdit.state = '已开放'
       store.commit('updateCurrent',{project:projectEdit, index:store.getters.get_currentIndex})
       const parts = res.data.link.split('/')
       link_display.value = 'http://localhost:5173/#/answer/' + parts[parts.length - 1]
       link_share.value = true
+      store.commit('setCurrent', -1)
     }
   }).catch(err=>{
     console.log(err)
