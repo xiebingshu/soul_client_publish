@@ -153,10 +153,10 @@
 const sumtableData = reactive([
   {
     recovery: 0,
-    avgCompletionTime: '0'
+    avgCompletionTime: '0s'
   }
 ]);
-const questionnaireTitle = ref('问卷标题');
+const questionnaireTitle = ref(getProject_use().name);
 const activeIndex = ref('/');
 const chartTypes_for_chart = ['bar', 'line', 'pie','ring'];
 const chartTypes_for_star = ['bar','line','pie','ring'];
@@ -185,7 +185,9 @@ function getAnswer(){
       for(let answer of answers){
         sumTime += answer.duration
       }
-      sumtableData[0].avgCompletionTime = (sumTime / answers.length) + '秒'
+      if(answers.length != 0){
+        sumtableData[0].avgCompletionTime = (sumTime / answers.length) + '秒'
+      }
       sumtableData[0].recovery = answers.length
       console.log(getProject_use())
       console.log(store.state.Project.currentId)
@@ -203,6 +205,7 @@ function getAnswer(){
           keywords:[]
         }
         let question = getProject_use().questions[i]
+        questionnaireTitle.value = getProject_use().name
         let question_answer = res.data.all_info.qn.questions[i].extra_data
         if(question.type === 'text'){
           question_state.id = questionId;

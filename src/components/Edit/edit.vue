@@ -465,7 +465,7 @@ function getSharelink(id){
 // 成功请求回数据后，进入then，并用console.log打印结果
   }).then(res => {
     if(res.data.errno == 0){
-      const projectEdit = geQuestionnaire_full_answer()
+      const projectEdit = getProject_edit()
       projectEdit.state = '已开放'
       store.commit('updateCurrent',{project:projectEdit, index:store.getters.get_currentIndex})
       const parts = res.data.link.split('/')

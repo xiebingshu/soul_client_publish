@@ -556,7 +556,7 @@ function geQuestionnaire_full_preview(){
   }).catch(err=>{
     console.log(err)
   })
-  if(project_edit.title_URL != null){
+  if(project_edit.title_URL != null && project_edit.title_URL != ''){
     axios({
       // 接口网址：包含协议名，域名，端口和路由
       url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
@@ -581,9 +581,7 @@ function geQuestionnaire_full_preview(){
       console.log(err)
     })
   }
-  if(project_edit.title_URL == null){
-    title_succeed = true
-  }
+  title_succeed = true
   axios({
     // 接口网址：包含协议名，域名，端口和路由
     url: 'http://82.156.174.104:8000/api/edit_qn/preview_qn',
@@ -767,7 +765,7 @@ function geQuestionnaire_full_answer(){
   }).catch(err=>{
     console.log(err)
   })
-  if(project_edit.title_URL != null){
+  if(project_edit.title_URL != null && project_edit.title_URL != ''){
     axios({
       // 接口网址：包含协议名，域名，端口和路由
       url: 'http://82.156.174.104:8000/api/edit_qn/read_qn_file',
@@ -1006,7 +1004,7 @@ function getSharelink(id){
 // 成功请求回数据后，进入then，并用console.log打印结果
   }).then(res => {
     if(res.data.errno == 0){
-      const projectEdit = geQuestionnaire_full_answer()
+      const projectEdit = getProject_edit()
       projectEdit.state = '已开放'
       store.commit('updateCurrent',{project:projectEdit, index:store.getters.get_currentIndex})
       const parts = res.data.link.split('/')
