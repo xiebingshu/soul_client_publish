@@ -1009,7 +1009,7 @@ function getSharelink(id){
       projectEdit.state = '已开放'
       store.commit('updateCurrent',{project:projectEdit, index:store.getters.get_currentIndex})
       const parts = res.data.link.split('/')
-      link_display.value = 'http://localhost:5173/#/answer/' + parts[parts.length - 1]
+      link_display.value = 'http://localhost:5174/#/answer/' + parts[parts.length - 1]
       link_share.value = true
       store.commit('setCurrent', -1)
     }

@@ -169,7 +169,7 @@ const qn_id = ref(-1)
 const start_time = ref(null)
 const end_time = ref(null)
 const route = useRoute()
-const type = ref(0)
+const project_type = ref(0)
 const link = route.params.link
 watch(() => store.state.User.token, (newVal, oldVal) => {
   token.value = newVal
@@ -195,14 +195,14 @@ onMounted(()=>{
     console.log(res)
     if(res.data.errno == 1004){
       ElMessage.error('问卷未发布或已关闭')
-      router.push('../project')
+      router.push('../project/individual')
     }
     if(res.data.errno == 1006){
       ElMessage.error('您已回答过该问卷')
-      router.push('../project')
+      router.push('../project/individual')
     }
     if(res.data.errno == 0){
-      type.value = res.data.qn.type
+      project_type.value = res.data.qn.type
       qn_id.value = res.data.qn.id
       background_Url.value = res.data.qn.background_image
       description_Text.value = res.data.qn.description
@@ -432,21 +432,20 @@ function submit(){
   }).then(res => {
     if(res.data.errno == 0){
       ElMessage.success('提交成功')
-      if(type.value == 1){
+      if(project_type.value == 1){
         ElMessage.info('您客观题的得分为' + res.data.score)
         let timer
         timer = setTimeout(()=>{
-          router.push('../project')
+          router.push('../project/individual')
         },2000)
       }
-      router.push('../project')
+      router.push('../project/individual')
     }
   }).catch(err=>{
     console.log(err)
   })
 }
 const icons = [ChatRound, ChatLineRound, ChatDotRound]
-const type=ref(['text', 'select', 'pulldown', 'date', 'number', 'grade', 'picture', 'file'])
 const font_color = ref('#FFFFFF')
 const background_Url = ref('')
 const background_Content = ref('')

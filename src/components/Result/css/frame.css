@@ -114,7 +114,7 @@
     height: 93%;
 }
 .main {
-    margin-left: 70px; /* 侧边栏宽度 */
+    margin: auto; /* 侧边栏宽度 */
     height: 100%;
   }
 

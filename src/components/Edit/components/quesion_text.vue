@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'container': Question.mutex === false, 'container_mutex': Question.mutex}" ref="question_container" @click="select" >
+  <div class="container" ref="question_container" @click="select" >
     <div style="margin-bottom: 10px">
       <div class="title"><span v-if="Question.must">*</span><span style="font-weight: bold" v-if="number === true">{{props.index+1}}. </span>{{Question.name}}<span v-if="Question.must" style="color:indianred;">（必填）</span></div>
       <span class="description" v-if="Question.description != ''">{{Question.description}}</span>
@@ -141,6 +141,7 @@ watch(() => store.state.Project.currentQuestion, (newVal, oldVal) => {
     question_container.value.classList.add('container_select')
   }
   if(oldVal === props.index && newVal != props.index){
+    console.log(oldVal, newVal)
     question_container.value.classList.remove('container_select')
   }
 })
@@ -159,6 +160,7 @@ function select(){
     store.commit('updateQuestion', props.index)
   }
   else{
+    console.log('cause')
     question_container.value.classList.remove('container_select')
     store.commit('updateQuestion', -1)
   }
@@ -167,12 +169,6 @@ function select(){
 
 <style scoped>
 .container{
-  width: 99.7%;
-  min-height: 90px;
-  background: rgba(255,255,255,0);
-  border: 1px #7e7e7f solid;
-}
-.container_mutex{
   width: 99.7%;
   min-height: 90px;
   background: rgba(255,255,255,0);

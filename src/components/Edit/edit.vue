@@ -296,6 +296,7 @@ function getNowDate() {
 function save_qn(){
   const questions = getProject_use().questions
   const questions_upload = []
+  let score_tmp = 0
   for(let i = 0; i < questions.length; i++)
   {
     let question = questions[i]
@@ -312,6 +313,7 @@ function save_qn(){
       num_limit: 0,
       multi_lines: false,
       unit: '',
+      score: 0,
     }
     if(question.type === 'select' && question.mutex === false){
       question_upload.type = 1
@@ -323,8 +325,10 @@ function save_qn(){
       question_upload.multi_lines = question.mutex == false ? 0 : 1
     }
     if(Qr_type.value === '考试' && ['select', 'pulldown'].includes(question.type) && question.answer != null){
-      ElMessage('enter')
       question_upload.answer1 = num2string(question.answer)
+      if(question_upload.answer1 != '' && question_upload.answer1 != null){
+        score_tmp ++
+      }
       console.log(num2string(question.answer))
     }
     if(question.type === 'select' && question.mutex === true){
@@ -397,7 +401,11 @@ function save_qn(){
     }
     questions_upload.push(question_upload)
   }
-  console.log(questions_upload)
+  if(score_tmp != 0){
+    for(let i = 0; i < questions.length; i++){
+      questions_upload[i].score = Math.floor(100 / score_tmp)
+    }
+  }
   axios({
     // 接口网址：包含协议名，域名，端口和路由
     url: 'http://82.156.174.104:8000/api/edit_qn/save_qn',
@@ -447,7 +455,9 @@ function num2string(answers){
       answerString += char
     }
   }
-  return answerString
+  console.log(answerString)
+  console.log(answerString.length)
+  return answerString.trim()
 }
 const link_share = ref(false)
 const link_display = ref('')

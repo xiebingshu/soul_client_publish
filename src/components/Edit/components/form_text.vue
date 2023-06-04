@@ -3,7 +3,7 @@
     <el-divider></el-divider>
     <el-form ref="form_container" :model="form" label-width="100px" class="outlook-form" label-suffix="">
       <el-form-item label="切换组件类型" v-if="Question_type === 'text'">
-        <el-select v-model="form.mutex" class="m-2" :placeholder="form.mutex" size="small">
+        <el-select v-model="form.mutex" class="m-2"  size="small">
           <el-option
               v-for="item in options_text"
               :key="item.value"
@@ -13,7 +13,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="切换组件类型" v-if="Question_type === 'select'">
-              <el-select v-model="form.mutex" class="m-2" :placeholder="form.mutex" size="small">
+              <el-select v-model="form.mutex" class="m-2"  size="small">
                 <el-option
                     v-for="item in options_select"
                     :key="item.value"
@@ -23,7 +23,7 @@
               </el-select>
       </el-form-item>
       <el-form-item label="切换组件类型" v-if="Question_type === 'date'">
-        <el-select v-model="form.mutex" class="m-2" :placeholder="form.mutex" size="small">
+        <el-select v-model="form.mutex" class="m-2"  size="small">
           <el-option
               v-for="item in options_date"
               :key="item.value"
@@ -33,7 +33,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="切换组件类型" v-if="Question_type === 'picture'">
-        <el-select v-model="form.mutex" class="m-2" :placeholder="form.mutex" size="small" @change="form.picture_content = ''">
+        <el-select v-model="form.mutex" class="m-2" size="small" @change="form.picture_content = ''">
           <el-option
               v-for="item in options_picture"
               :key="item.value"
