@@ -27,7 +27,13 @@
                 <div style="margin-top: 5px; margin-bottom: 20px">
                     <el-card :body-style="{ padding: '0px' }">
                         <img
+                            v-if="item.background_Content == ''"
                             src="../assets/questionnaire.png"
+                            class="questionnaire-image"
+                        />
+                        <img
+                            v-if="item.background_Content != ''"
+                            :src="item.background_Content"
                             class="questionnaire-image"
                         />
                         <div style="padding: 14px;" class="header_container">
@@ -1040,6 +1046,8 @@ function test(){
 }
 .questionnaire-image {
     width: 100%;
+    height: 133px;
+    background-size: cover;
     display: block;
 }
 .option-image {
