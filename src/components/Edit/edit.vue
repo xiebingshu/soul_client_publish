@@ -91,7 +91,7 @@
 
 <script setup>
 import {useStore} from "vuex";
-import {onMounted, provide, reactive, ref, toRaw, watch} from "vue";
+import {onBeforeMount, onMounted, provide, reactive, ref, toRaw, watch} from "vue";
 const store = useStore()
 import {Finished, HomeFilled, MessageBox, Picture, Share, View} from "@element-plus/icons-vue";
 import buttonglass from "./components/buttonglass.vue";
@@ -102,9 +102,6 @@ import form_text from "./components/form_text.vue"
 import {useRouter} from "vue-router";
 import axios from "axios";
 import {ElMessage} from "element-plus";
-onMounted(()=>{
-  console.log(getProject_use().background_Content)
-})
 import {decodeUtf8, encodeUtf8} from "node-forge/lib/util.js";
 import clipboard3 from "vue-clipboard3";
 const type=ref(['text', 'select', 'pulldown', 'date', 'number', 'grade', 'picture', 'file'])
@@ -123,6 +120,12 @@ const Qr_type = ref(getProject_use().type)
 watch(() => store.state.User.token, (newVal, oldVal) => {
   token.value = newVal
 })
+// onMounted(()=>{
+//   if(token.value === ''){
+//     router.push('./login')
+//   }
+//   background_Url.value = getProject_use().background_URL
+// })
 function home(){
   if(saveornot.value === false)
   {

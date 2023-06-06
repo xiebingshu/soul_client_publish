@@ -2,7 +2,7 @@
 
   <!-- 顶部导航栏 -->
   <el-header class="header_test">
-    <el-button type="info" :icon="HomeFilled" class="see" @click="home">返回</el-button>
+    <div class="see"><el-button type="info" :icon="HomeFilled" class="see" @click="home">返回</el-button></div>
   </el-header>
   <div class="content-wrapper" :style="{ backgroundImage: 'url(' + getProject_use().background_Content+ ')'}">
 
@@ -43,7 +43,7 @@
                     <div :id="'chart'+ question.id "  class="question-chart"></div>
                   </div>
                   <div class="button-container">
-                      <el-button class="rendering_button" v-for="chartType in chartTypes_for_chart" :key="chartType" @click="changeChartType(question.id, chartType, question)">
+                      <el-button v-for="chartType in chartTypes_for_chart" :key="chartType" @click="changeChartType(question.id, chartType, question)">
                           {{ chartType }}
                       </el-button>
                   </div>
@@ -53,7 +53,7 @@
                     <div :id="'chart'+ question.id "  class="question-chart"></div>
                   </div>
                   <div class="button-container">
-                      <el-button class="rendering_button" v-for="chartType in chartTypes_for_star" :key="chartType" @click="changeChartType(question.id, chartType, question)">
+                      <el-button v-for="chartType in chartTypes_for_star" :key="chartType" @click="changeChartType(question.id, chartType, question)">
                           {{ chartType }}
                       </el-button>
                   </div>
@@ -63,7 +63,7 @@
                     <div :id="'chart'+ question.id "  class="question-chart"></div>
                   </div>
                   <div class="button-container">
-                      <el-button class="rendering_button" v-for="chartType in chartTypes_for_number" :key="chartType" @click="changeChartType(question.id, chartType, question)">
+                      <el-button  v-for="chartType in chartTypes_for_number" :key="chartType" @click="changeChartType(question.id, chartType, question)">
                           {{ chartType }}
                       </el-button>
                   </div>
@@ -111,7 +111,7 @@
                     </div>
                   </div>
                   <div class="button-container">
-                    <el-button class="rendering_button" v-for="chartType in chartTypes_for_text" :key="chartType" @click="changeChartType(question.id, chartType, question)">
+                    <el-button v-for="chartType in chartTypes_for_text" :key="chartType" @click="changeChartType(question.id, chartType, question)">
                       {{ chartType }}
                     </el-button>
                   </div>
@@ -335,10 +335,20 @@ const state = reactive({
         xAxis: {
           type: 'category',
           data: question.categories,
+          axisLine: {
+            lineStyle: {
+              color: getProject_use().font_color,
+            }
+          }
         },
         
         yAxis: {
           type: 'value',
+          axisLine: {
+            lineStyle: {
+              color: getProject_use().font_color,
+            }
+          }
         },
         series: [{
           type: 'bar',
@@ -366,7 +376,7 @@ const state = reactive({
           data: question.continued_categories,
           axisLine: {
             lineStyle: {
-              color: '#999',
+              color: getProject_use().font_color,
               width: 2
             }
           },
@@ -374,7 +384,7 @@ const state = reactive({
             show: false
           },
           axisLabel: {
-            color: '#666',
+            color: getProject_use().font_color,
             fontSize: 14,
             formatter: '{value}\n',
           },
@@ -383,7 +393,7 @@ const state = reactive({
           type: 'value',
           axisLine: {
             lineStyle: {
-              color: '#999',
+              color: getProject_use().font_color,
               width: 2
             }
           },
@@ -391,12 +401,12 @@ const state = reactive({
             show: false
           },
           axisLabel: {
-            color: '#666',
+            color: getProject_use().font_color,
             fontSize: 14,
           },
           splitLine: {
             lineStyle: {
-              color: '#eee',
+              color: getProject_use().font_color,
               type: 'dashed'
             }
           }
@@ -434,7 +444,7 @@ const state = reactive({
           textStyle: {
             fontSize: 24,
             fontWeight: 'bold',
-            color: '#333'
+            color: getProject_use().font_color
           },
           left: 'center',
           top: '20px'
@@ -449,7 +459,7 @@ const state = reactive({
           top: 'center',
           textStyle: {
             fontSize: 14,
-            color: '#666'
+            color: getProject_use().font_color
           },
           data: question.categories
         },
@@ -601,6 +611,36 @@ const state = reactive({
 
 
   </script>
+<style scoped>
+.el-button{
+  width: 100px;
+  color :v-bind(font_color_form);
+  padding: 5px;
+  font-weight: bold;
+  background: rgba(126, 126, 127, 0.3);
+  border-color: white;
+}
+.el-button:hover{
+  background: linear-gradient(90deg,transparent,
+  rgba(255, 255, 255, 0.7),transparent);
+  transition: 0.5s;
+  border-color: #515152;
+}
+.see .el-button{
+  color: white;
+  width: 60px;
+  font-weight: normal;
+  padding: 5px;
+  background: rgb(126, 126, 127);
+  border-color: rgb(255, 255, 255);
+}
+.see .el-button:hover{
+  background: linear-gradient(90deg,transparent,
+  rgba(255, 255, 255, 0.7),transparent);
+  transition: 0.5s;
+  border-color: #515152;
+}
+</style>
 <style src="./css/frame.css" scoped></style>
 <style src="./css/overview.css" scoped></style>
 <style src="./css/question.css" scoped></style>

@@ -142,15 +142,21 @@
                                   style="width: 100%"
                               >
                                 <el-table-column type="index" width="50" />
-                                <el-table-column property="current_date" label="名称/修改时间" width="340" >
+                                <el-table-column property="current_date" label="名称/修改时间" width="300" >
                                   <template #default="scope">
                                     <div style="font-size: 18px">{{scope.row.name}}</div>
                                     <div class="time">修改时间：{{scope.row.current_date}}</div>
                                   </template>
                                 </el-table-column>
-                                <el-table-column property="id" label="问卷ID" width="190" />
-                                <el-table-column property="results" label="问卷统计" width="190" />
-                                <el-table-column label="问卷状态" width="190" >
+                                <el-table-column property="id" label="问卷ID" width="150" />
+                                <el-table-column label="问卷类型" width="150" >
+                                  <template #default="scope">
+                                    <el-tag class="ml-2"  v-if="scope.row.type == '考试'">考试问卷</el-tag>
+                                    <el-tag class="ml-2" type="info" v-if="scope.row.type == '非考试'">非考试问卷</el-tag>
+                                  </template>
+                                </el-table-column>
+                                <el-table-column property="results" label="问卷统计" width="150" />
+                                <el-table-column label="问卷状态" width="150" >
                                   <template #default="scope">
                                     <el-tag class="ml-2" type="success" v-if="scope.row.state == '已开放'">{{scope.row.state}}</el-tag>
                                     <el-tag class="ml-2" type="warning" v-if="scope.row.state == '未开放'">{{scope.row.state}}</el-tag>
@@ -163,6 +169,8 @@
                                     <el-icon class="option-image" @click="go_to_edit(scope.row)" v-if="getCurrentOrganization().state === 4"><Edit /></el-icon>
                                     <el-icon class="option-image" @click="go_to_static(scope.row)" v-if="getCurrentOrganization().state === 4"><Histogram /></el-icon>
                                     <el-icon class="option-image" @click="getSharelink(scope.row.id)" v-if="getCurrentOrganization().state === 4"><Share /></el-icon>
+                                    <el-icon class="option-image" style="color: #7ef66a" v-if="scope.row.state == '未开放'" @click="open(scope.row.id)"><SwitchButton /></el-icon>
+                                    <el-icon class="option-image" style="color: #ecdd43" v-if="scope.row.state == '已开放'" @click="close(scope.row.id)"><SwitchButton /></el-icon>
                                     <el-icon class="option-image_delete" @click="deleteQr(scope.row)" v-if="getCurrentOrganization().state === 4"><DeleteFilled /></el-icon>
                                   </template>
                                 </el-table-column>
@@ -355,7 +363,7 @@ import {
   Menu as IconMenu,
   Location,
   Setting,
-  Plus, View, Edit, Histogram, Share, DeleteFilled, Finished, Promotion,
+  Plus, View, Edit, Histogram, Share, DeleteFilled, Finished, Promotion, SwitchButton,
 } from '@element-plus/icons-vue'
 import {ElMessage, ElTable} from "element-plus";
 import axios from "axios";
@@ -389,6 +397,64 @@ function getApplication(){
   }).then(res => {
     if(res.data.errno == 0){
       Applications.value = JSON.parse(JSON.stringify(res.data.list))
+    }
+  }).catch(err=>{
+    console.log(err)
+  })
+}
+function close(id){
+  axios({
+    // 接口网址：包含协议名，域名，端口和路由
+    url: 'http://82.156.174.104/api/mainpage/qn_about/close_qn',
+    // 请求方式，默认为get，可以不写
+    method: 'post',
+    // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
+    data: JSON.stringify({
+      token: token.value,
+      qn_id: id,
+      organization_id: getCurrentOrganization().id
+    }),
+// 成功请求回数据后，进入then，并用console.log打印结果
+  }).then(res => {
+    console.log(res)
+    if(res.data.errno === 0){
+      store.commit('setCurrent', id)
+      const projectEdit = getProject_edit()
+      projectEdit.state = '未开放'
+      store.commit('updateCurrent',{project:projectEdit, index:store.getters.get_currentIndex})
+      store.commit('setCurrent', -1)
+    }
+    else{
+      ElMessage.error('出错啦，找周霄')
+    }
+  }).catch(err=>{
+    console.log(err)
+  })
+}
+function open(id){
+  axios({
+    // 接口网址：包含协议名，域名，端口和路由
+    url: 'http://82.156.174.104/api/mainpage/qn_about/open_qn',
+    // 请求方式，默认为get，可以不写
+    method: 'post',
+    // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
+    data: JSON.stringify({
+      token: token.value,
+      qn_id: id,
+      organization_id: getCurrentOrganization().id
+    }),
+// 成功请求回数据后，进入then，并用console.log打印结果
+  }).then(res => {
+    console.log(res)
+    if(res.data.errno === 0){
+      store.commit('setCurrent', id)
+      const projectEdit = getProject_edit()
+      projectEdit.state = '已开放'
+      store.commit('updateCurrent',{project:projectEdit, index:store.getters.get_currentIndex})
+      store.commit('setCurrent', -1)
+    }
+    else{
+      ElMessage.error('出错啦，找周霄')
     }
   }).catch(err=>{
     console.log(err)
