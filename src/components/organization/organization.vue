@@ -1079,7 +1079,7 @@ function string2num(answersString){
 }
 function geQuestionnaire_full(){
   const project_edit = getProject_edit()
-  if(project_edit.state == 1){
+  if(project_edit.state == '已开放'){
     ElMessage.error('问卷已经发布，无法编辑')
     return
   }

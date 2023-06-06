@@ -97,7 +97,7 @@ import {Finished, HomeFilled, MessageBox, Picture, Share, View} from "@element-p
 import buttonglass from "./components/buttonglass.vue";
 import display from "./components/display.vue";
 import Display from "./components/display.vue";
-const font_color = ref(getProject_use().font_color)
+const font_color = ref('')
 import form_text from "./components/form_text.vue"
 import {useRouter} from "vue-router";
 import axios from "axios";
@@ -106,26 +106,38 @@ import {decodeUtf8, encodeUtf8} from "node-forge/lib/util.js";
 import clipboard3 from "vue-clipboard3";
 const type=ref(['text', 'select', 'pulldown', 'date', 'number', 'grade', 'picture', 'file'])
 const current_Question_id = ref(store.state.Project.currentQuestion)
-const background_Url = ref(getProject_use().background_URL)
-const background_Content = ref(getProject_use().background_Content)
-const title_Url = ref(toRaw(getProject_use().title_URL))
-const title_Content = ref(getProject_use().title_Content)
-const name = ref(getProject_use().name)
-const description = ref(getProject_use().description)
-const number = ref(getProject_use().number)
+const background_Url = ref('')
+const background_Content = ref('')
+const title_Url = ref('')
+const title_Content = ref('')
+const name = ref('')
+const description = ref('')
+const number = ref(true)
 const router = useRouter()
 const token = ref(store.state.User.token)
 const saveornot = ref(true)
-const Qr_type = ref(getProject_use().type)
+const Qr_type = ref('')
 watch(() => store.state.User.token, (newVal, oldVal) => {
   token.value = newVal
 })
-// onMounted(()=>{
-//   if(token.value === ''){
-//     router.push('./login')
-//   }
-//   background_Url.value = getProject_use().background_URL
-// })
+
+onBeforeMount(()=>{
+  if(token.value === ''){
+    router.push('./login')
+  }
+  if(store.state.Project.currentId == -1){
+    router.push('./project')
+  }
+  background_Url.value = getProject_use().background_URL
+  background_Content.value = getProject_use().background_Content
+  font_color.value = getProject_use().font_color
+  title_Url.value = toRaw(getProject_use().title_URL)
+  title_Content.value = getProject_use().title_Content
+  name.value = getProject_use().name
+  description.value = getProject_use().description
+  number.value = getProject_use().number
+  Qr_type.value = getProject_use().type
+})
 function home(){
   if(saveornot.value === false)
   {
