@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import {onMounted, reactive, ref} from "vue"
+import {onMounted, reactive, ref, watch} from "vue"
 import {mapState, mapGetters, mapMutations, createNamespacedHelpers} from 'vuex'
 import {useStore} from "vuex";
 import {ElMessage} from "element-plus";
@@ -81,7 +81,8 @@ const signForm = reactive({
   password: '',
   email: '',
   captcha: '',
-  captcha_get: ''
+  captcha_get: '',
+  email_change: false
 })
 const loginForm = reactive({
   username: '',
@@ -95,6 +96,10 @@ function signUp(){
   }
   if(!signForm.password.match('^[a-zA-Z0-9_-]{6,16}$')){
     ElMessage.error('密码不符合规范')
+    return
+  }
+  if(signForm.email_change === true){
+    ElMessage.error('邮箱改变，请重新获取验证码')
     return
   }
   if(signForm.captcha === ''){
@@ -135,6 +140,7 @@ function signUp(){
         signForm.password = ''
         signForm.captcha = ''
         signForm.captcha_get = ''
+        signForm.email_change = false
       }
     }).catch(err=>{
       console.log(err)
@@ -186,6 +192,12 @@ function logIn(){
     console.log(err)
   })
 }
+watch(() => signForm.email, (newVal, oldVal) => {
+  if(signForm.captcha_get != ''){
+    signForm.email_change = true
+    signForm.captcha_get = ''
+  }
+},{deep: true})
 function getCaptcha(){
   if(signForm.email === ''){
     ElMessage.error('请输入邮箱')
@@ -208,6 +220,7 @@ function getCaptcha(){
         return
       }
       else {
+        signForm.email_change = false
         signForm.captcha_get = Base64.decode(encodeUtf8(res.data.verification))
       }
     }).catch(err=>{
