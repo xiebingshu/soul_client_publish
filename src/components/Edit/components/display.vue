@@ -112,7 +112,7 @@ function test(){
   font-size: 20px;
 }
 .title_container{
-  min-height: 150px;
+  min-height: 200px;
   background-size: cover;
   border-radius: 15px 15px 15px 15px;
 }

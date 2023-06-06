@@ -44,7 +44,7 @@
                       </el-checkbox-group>
                     </div>
                     <!--    以上为多项选择-->
-                    <div class="el-radio-container" v-if="question.type === 'pulldown'">
+                    <div class="el-input_container" v-if="question.type === 'pulldown'">
                       <el-select placeholder="请选择" style="width: 90%" v-model="pullAnswer[item]">
                         <el-option
                             v-for="(option, item) in question.options"
@@ -55,7 +55,7 @@
                       </el-select>
                     </div>
                     <!--    以上为下拉选择-->
-                    <div class="el-radio-container" v-if="question.type === 'date' && question.mutex === false">
+                    <div class="el-input_container" v-if="question.type === 'date' && question.mutex === false">
                       <el-date-picker
                           align="right"
                           type="date"
@@ -66,7 +66,7 @@
                       </el-date-picker>
                     </div>
                     <!--    以上为日期选择-->
-                    <div class="el-radio-container" v-if="question.type === 'date' && question.mutex === true">
+                    <div class="el-input_container" v-if="question.type === 'date' && question.mutex === true">
                       <el-date-picker
                           align="right"
                           type="datetime"
@@ -525,7 +525,7 @@ function test(){
   background-size: cover;
 }
 .header{
-  background: #333f4d;
+  background: linear-gradient(to right, #21444EFF, #CDE9FAFF);
   height: 50px;
   line-height: 45px;
   padding-left: 10px;
@@ -604,7 +604,7 @@ function test(){
   font-size: 20px;
 }
 .title_container{
-  min-height: 150px;
+  min-height: 200px;
   background-size: cover;
   border-radius: 15px 15px 15px 15px;
 }

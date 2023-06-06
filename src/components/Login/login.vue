@@ -88,8 +88,12 @@ const loginForm = reactive({
 })
 const captcha_time = ref('获取验证码')
 function signUp(){
-  if(!signForm.username.match('^[a-zA-Z0-9_-]{4,16}$')){
-    ElMessage.error('用户名不符合规范')
+  if(signForm.username == ''){
+    ElMessage.error('用户名不能为空')
+    return
+  }
+  if(signForm.password == ''){
+    ElMessage.error('密码不能为空')
     return
   }
   if(!signForm.password.match('^[a-zA-Z0-9_-]{6,16}$')){
@@ -122,6 +126,7 @@ function signUp(){
       }),
 // 成功请求回数据后，进入then，并用console.log打印结果
     }).then(res => {
+      console.log(res)
       if(res.data.errno == 1007){
         ElMessage.error("用户名已存在")
         return
@@ -152,8 +157,12 @@ watch(() => signForm.email, (newVal, oldVal) => {
   }
 },{deep: true})
 function logIn(){
-  if(!loginForm.username.match('^[a-zA-Z0-9_-]{4,16}$')){
-    ElMessage.error('用户名不符合规范')
+  if(loginForm.username == ''){
+    ElMessage.error('用户名不能为空')
+    return
+  }
+  if(loginForm.password == ''){
+    ElMessage.error('密码不能为空')
     return
   }
   if(!loginForm.password.match('^[a-zA-Z0-9_-]{6,16}$')){

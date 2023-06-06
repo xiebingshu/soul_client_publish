@@ -412,7 +412,7 @@ function test(){
   background-size: cover;
 }
 .header{
-  background: #333f4d;
+  background: linear-gradient(to right, #21444EFF, #CDE9FAFF);
   height: 50px;
   line-height: 45px;
   padding-left: 10px;

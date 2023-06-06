@@ -180,7 +180,7 @@ const newQuestionnaire = reactive({
     name: '',
     organization: -1,
     number: true,
-    background_URL: './static/mediaquestionnaire/temp/edit_cache/defult.png',//问卷背景图
+    background_URL: './static/media/questionnaire/77/file/Background_image/default.png',//问卷背景图
     background_Content:'',
     title_URL:'',//表头背景图
     title_Content:'',
@@ -221,7 +221,7 @@ function initNewQuestionnaire(){
     newQuestionnaire.name=''
     newQuestionnaire.organization = -1
     newQuestionnaire.number = true
-    newQuestionnaire.background_URL='./static/mediaquestionnaire/temp/edit_cache/defult.png'
+    newQuestionnaire.background_URL='./static/media/questionnaire/77/file/Background_image/default.png'
     newQuestionnaire.background_Content = ''
     newQuestionnaire.title_URL=''
     newQuestionnaire.title_Content = ''

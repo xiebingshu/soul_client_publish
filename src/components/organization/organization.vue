@@ -128,7 +128,7 @@
                                     </div>
                                     <div>
                                         <el-button class="control-button" @click="dialogBlankQuestionnaireAdd=true" text v-if="getCurrentOrganization().state === 4">创建问卷</el-button>
-                                        <el-button class="control-button" @click="isLookQuestionnaire=false" text>成员列表</el-button>
+                                        <el-button class="control-button" @click="uploadMember" text>成员列表</el-button>
                                     </div>
                                 </div>
                             </template>
@@ -214,7 +214,7 @@
                                         </el-popover>
                                         <el-button class="control-button" v-if="getCurrentOrganization().state === 4" @click="deleteOrganization">解散组织</el-button>
                                         <el-button class="control-button" v-if="getCurrentOrganization().state !== 4" @click="leave">退出组织</el-button>
-                                        <el-button class="control-button" @click="isLookQuestionnaire=true">团队问卷</el-button>
+                                        <el-button class="control-button" @click="uploadQuestionnaire">团队问卷</el-button>
                                     </div>
                                 </div>
                             </template>
@@ -761,9 +761,10 @@ function changeCurrentOrganization(item) {
     console.log(res)
     if(res.data.errno === 0){
       store.commit('setCurrentOrganizationId',item.id)
-      if(item.getQr === true){
-        geQuestionnaire_former()
-      }
+      // if(item.getQr === true){
+      //   geQuestionnaire_former()
+      // }
+      geQuestionnaire_former()
       const edit = getOrganization_edit()
       edit.members = JSON.parse(JSON.stringify(res.data.list))
       edit.getQr = false
@@ -772,6 +773,34 @@ function changeCurrentOrganization(item) {
   }).catch(err=>{
     console.log(err)
   })
+}
+function uploadMember(){
+  isLookQuestionnaire.value = false
+  axios({
+    // 接口网址：包含协议名，域名，端口和路由
+    url: 'http://82.156.174.104/api/user_about/organization/list_user',
+    // 请求方式，默认为get，可以不写
+    method: 'post',
+    // 请求可以携带的参数，用对象来写，get方法对应params，其他方法对应data
+    data: JSON.stringify({
+      token: token.value,
+      organization_id: currentId.value
+    }),
+// 成功请求回数据后，进入then，并用console.log打印结果
+  }).then(res => {
+    console.log(res)
+    if(res.data.errno === 0){
+      const edit = getOrganization_edit()
+      edit.members = JSON.parse(JSON.stringify(res.data.list))
+      store.commit('updateCurrentOrganization', {organization: edit, index:store.getters.get_currentOrganizationIndex})
+    }
+  }).catch(err=>{
+    console.log(err)
+  })
+}
+function uploadQuestionnaire(){
+  isLookQuestionnaire.value = true
+  geQuestionnaire_former()
 }
 function removeMember(item, index){
   axios({
@@ -806,7 +835,7 @@ const newQuestionnaire = reactive({
   name: '',
   organization: -1,
   number: true,
-  background_URL: './static/mediaquestionnaire/temp/edit_cache/defult.png',//问卷背景图
+  background_URL: './static/media/questionnaire/77/file/Background_image/default.png',//问卷背景图
   background_Content:'',
   title_URL:'',//表头背景图
   title_Content:'',
@@ -824,7 +853,7 @@ function initNewQuestionnaire(){
   newQuestionnaire.name=''
   newQuestionnaire.organization = -1
   newQuestionnaire.number = true
-  newQuestionnaire.background_URL='./static/mediaquestionnaire/temp/edit_cache/defult.png'
+  newQuestionnaire.background_URL='./static/media/questionnaire/77/file/Background_image/default.png'
   newQuestionnaire.background_Content = ''
   newQuestionnaire.title_URL=''
   newQuestionnaire.title_Content = ''
@@ -903,6 +932,16 @@ function geQuestionnaire_former(){
       for(let i = 0; i < Qrlist.length; i++){
         let Qr = Qrlist[i]
         console.log(Qr)
+        let getAlready = false
+        for(let j = 0; j < Projects_use.value.length; j++){
+          if(Qr.id == Projects_use.value[j].id){
+            getAlready = true
+            break
+          }
+        }
+        if(getAlready == true){
+          continue
+        }
         const newQuestionnaire = {
           name: Qr.title,
           organization: getCurrentOrganization().id,

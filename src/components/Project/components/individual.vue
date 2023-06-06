@@ -28,7 +28,7 @@
                     <el-card :body-style="{ padding: '0px' }">
                         <img
                             v-if="item.background_Content == ''"
-                            src="../assets/questionnaire.png"
+                            src="../assets/default.png"
                             class="questionnaire-image"
                         />
                         <img
@@ -37,7 +37,8 @@
                             class="questionnaire-image"
                         />
                         <div style="padding: 14px;" class="header_container">
-                            <span>{{item.name}}</span>
+                            <span>{{item.name}}
+                            </span>
                             <div class="card-bottom">
                                 <div class="time">修改时间：{{item.current_date}}</div>
                                 <el-icon class="option-image" @click="go_to_preview(item)"><View /></el-icon>
@@ -102,10 +103,16 @@
             >
                 <div style="margin-top: 5px; margin-bottom: 20px">
                     <el-card :body-style="{ padding: '0px' }">
-                        <img
-                            src="../assets/questionnaire.png"
-                            class="questionnaire-image"
-                        />
+                      <img
+                          v-if="item.background_Content == ''"
+                          src="../assets/default.png"
+                          class="questionnaire-image"
+                      />
+                      <img
+                          v-if="item.background_Content != ''"
+                          :src="item.background_Content"
+                          class="questionnaire-image"
+                      />
                         <div style="padding: 14px">
                             <span>{{item.name}}</span>
                             <div class="card-bottom">
@@ -248,7 +255,7 @@ watch(() => store.state.Project.Projects, (newVal, oldVal) => {
     console.log(newVal, oldVal)
     Projects_use.value = newVal
     Projects_edit.value = JSON.parse(JSON.stringify(newVal))
-})
+},{deep: true})
 onMounted(()=>{
   if(store.state.User.get_qr === true){
     geQuestionnaire_former()

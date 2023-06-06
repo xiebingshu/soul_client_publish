@@ -133,6 +133,10 @@ function home(){
   router.back()
 }
 function see(){
+  if(saveornot.value === false)
+  {
+    save_qn()
+  }
   router.push('preview')
 }
 function share(){
